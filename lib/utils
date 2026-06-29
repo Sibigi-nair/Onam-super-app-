@@ -1,0 +1,7 @@
+cd lib
+mkdir utils
+mkdir models
+mkdir services
+mkdir providers
+mkdir widgets
+mkdir screens
