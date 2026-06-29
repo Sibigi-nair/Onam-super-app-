@@ -14,4 +14,6 @@ A social media super app built by Sibigi.
 - **Project:** Onam Super App
 
 ## Status
-🚧 Under Development
+## Launch Status
+🚀 Ready for launch!
+
