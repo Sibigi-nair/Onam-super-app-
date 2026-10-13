@@ -10,7 +10,7 @@ A social media super app built by Sibigi.
 - Messaging and chat
 
 ## Developer
-- **Name:** Sibigi
+- **Name:** Sibigi nair
 - **Project:** Onam Super App
 
 ## Status
