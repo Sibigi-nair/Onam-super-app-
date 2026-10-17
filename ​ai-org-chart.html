@@ -1,0 +1,802 @@
+```html
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Business Org Chart - 100% Autonomous AI Agents</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        cyber: {
+                            bg: '#0a0a0f',
+                            card: 'rgba(18, 18, 28, 0.75)',
+                            pink: '#ff007f',
+                            purple: '#a855f7',
+                            cyan: '#00f0ff',
+                            green: '#39ff14',
+                            yellow: '#ffe600',
+                            orange: '#ff6b00',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace'],
+                    },
+                    animation: {
+                        'pulse-glow': 'pulseGlow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        pulseGlow: {
+                            '0%, 100%': { opacity: 1, filter: 'drop-shadow(0 0 8px currentColor)' },
+                            '50%': { opacity: 0.6, filter: 'drop-shadow(0 0 2px currentColor)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-6px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            background-color: #06060a;
+            background-image: 
+                radial-gradient(at 20% 20%, rgba(255, 0, 127, 0.12) 0px, transparent 50%),
+                radial-gradient(at 80% 20%, rgba(0, 240, 255, 0.12) 0px, transparent 50%),
+                radial-gradient(at 50% 80%, rgba(168, 85, 247, 0.12) 0px, transparent 50%);
+            background-attachment: fixed;
+            color: #e2e8f0;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Glassmorphism */
+        .glass-card {
+            background: rgba(15, 17, 26, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+        }
+
+        .glass-nav {
+            background: rgba(10, 10, 15, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* Neon Glow Utility Classes */
+        .glow-pink { box-shadow: 0 0 15px rgba(255, 0, 127, 0.2); border-color: rgba(255, 0, 127, 0.4); }
+        .glow-pink:hover { box-shadow: 0 0 25px rgba(255, 0, 127, 0.45); border-color: rgba(255, 0, 127, 0.8); }
+
+        .glow-cyan { box-shadow: 0 0 15px rgba(0, 240, 255, 0.2); border-color: rgba(0, 240, 255, 0.4); }
+        .glow-cyan:hover { box-shadow: 0 0 25px rgba(0, 240, 255, 0.45); border-color: rgba(0, 240, 255, 0.8); }
+
+        .glow-green { box-shadow: 0 0 15px rgba(57, 255, 20, 0.2); border-color: rgba(57, 255, 20, 0.4); }
+        .glow-green:hover { box-shadow: 0 0 25px rgba(57, 255, 20, 0.45); border-color: rgba(57, 255, 20, 0.8); }
+
+        .glow-orange { box-shadow: 0 0 15px rgba(255, 107, 0, 0.2); border-color: rgba(255, 107, 0, 0.4); }
+        .glow-orange:hover { box-shadow: 0 0 25px rgba(255, 107, 0, 0.45); border-color: rgba(255, 107, 0, 0.8); }
+
+        .glow-purple { box-shadow: 0 0 15px rgba(168, 85, 247, 0.25); border-color: rgba(168, 85, 247, 0.5); }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0f;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #262638;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3b3b54;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between pb-24 relative">
+
+    <!-- Grid Background Pattern -->
+    <div class="fixed inset-0 bg-[linear-gradient(to_right,#1f1f2e15_1px,transparent_1px),linear-gradient(to_bottom,#1f1f2e15_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none z-0"></div>
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-50 glass-nav px-4 lg:px-8 py-3 transition-all duration-300">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+            <!-- Logo & Title -->
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyber-pink via-cyber-purple to-cyber-cyan flex items-center justify-center p-0.5 shadow-lg shadow-cyber-pink/20">
+                    <div class="w-full h-full bg-black rounded-[10px] flex items-center justify-center">
+                        <i class="fa-solid fa-robot text-transparent bg-clip-text bg-gradient-to-r from-cyber-pink to-cyber-cyan text-lg"></i>
+                    </div>
+                </div>
+                <div>
+                    <h1 class="text-xl lg:text-2xl font-black tracking-wider uppercase text-transparent bg-clip-text bg-gradient-to-r from-cyber-pink via-cyber-purple to-cyber-cyan">
+                        AI WALA BUSINESS
+                    </h1>
+                    <p class="text-xs text-gray-400 font-mono tracking-tight">SAB ASLI AI • 100% AUTONOMOUS ORG CHART</p>
+                </div>
+            </div>
+
+            <!-- Global Action Controls & Search -->
+            <div class="flex flex-wrap items-center gap-3">
+                <!-- Search Box -->
+                <div class="relative">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs"></i>
+                    <input type="text" id="searchInput" placeholder="Search agent or task..." 
+                        class="bg-black/50 border border-gray-800 focus:border-cyber-cyan text-xs text-white rounded-lg pl-8 pr-3 py-2 outline-none w-40 sm:w-48 transition-all">
+                </div>
+
+                <!-- Department Filter Dropdown -->
+                <select id="deptFilter" class="bg-black/50 border border-gray-800 text-xs text-gray-300 rounded-lg px-3 py-2 outline-none cursor-pointer focus:border-cyber-purple">
+                    <option value="ALL">All Depts</option>
+                    <option value="SALES">Sales</option>
+                    <option value="SUPPORT">Support</option>
+                    <option value="MARKETING">Marketing</option>
+                    <option value="OPS">Ops</option>
+                </select>
+
+                <!-- Trigger Actions -->
+                <button onclick="toggleAllAgents(true)" class="px-3 py-2 rounded-lg bg-emerald-950/60 border border-emerald-500/40 text-emerald-400 text-xs font-mono hover:bg-emerald-900/60 transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-play text-[10px]"></i> Start All
+                </button>
+                <button onclick="toggleAllAgents(false)" class="px-3 py-2 rounded-lg bg-rose-950/60 border border-rose-500/40 text-rose-400 text-xs font-mono hover:bg-rose-900/60 transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-pause text-[10px]"></i> Pause All
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="max-w-7xl mx-auto px-4 lg:px-8 pt-8 z-10 w-full flex-grow">
+
+        <!-- Top Banner Stat Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
+            <!-- Stat 1: Total Payroll -->
+            <div class="glass-card rounded-2xl p-4 border border-white/10 flex items-center justify-between relative overflow-hidden group hover:border-cyber-pink/50 transition">
+                <div class="absolute -right-4 -bottom-4 w-24 h-24 bg-cyber-pink/10 rounded-full blur-xl group-hover:bg-cyber-pink/20 transition"></div>
+                <div>
+                    <span class="text-xs font-mono uppercase text-gray-400 tracking-wider">Monthly Payroll</span>
+                    <div class="text-3xl font-black text-white mt-1 flex items-baseline gap-2">
+                        <span>₹0</span>
+                        <span class="text-xs text-emerald-400 font-mono font-normal">(-100% saved)</span>
+                    </div>
+                </div>
+                <div class="w-12 h-12 rounded-xl bg-cyber-pink/10 border border-cyber-pink/30 flex items-center justify-center text-cyber-pink text-xl">
+                    <i class="fa-solid fa-sack-xmark"></i>
+                </div>
+            </div>
+
+            <!-- Stat 2: Active AI Workforce -->
+            <div class="glass-card rounded-2xl p-4 border border-white/10 flex items-center justify-between relative overflow-hidden group hover:border-cyber-cyan/50 transition">
+                <div class="absolute -right-4 -bottom-4 w-24 h-24 bg-cyber-cyan/10 rounded-full blur-xl group-hover:bg-cyber-cyan/20 transition"></div>
+                <div>
+                    <span class="text-xs font-mono uppercase text-gray-400 tracking-wider">AI Workforce</span>
+                    <div class="text-3xl font-black text-white mt-1 flex items-baseline gap-2">
+                        <span id="activeAgentCount">12 / 12</span>
+                        <span class="text-xs text-cyber-cyan font-mono font-normal">Active Agents</span>
+                    </div>
+                </div>
+                <div class="w-12 h-12 rounded-xl bg-cyber-cyan/10 border border-cyber-cyan/30 flex items-center justify-center text-cyber-cyan text-xl">
+                    <i class="fa-solid fa-microchip"></i>
+                </div>
+            </div>
+
+            <!-- Stat 3: Human Count -->
+            <div class="glass-card rounded-2xl p-4 border border-white/10 flex items-center justify-between relative overflow-hidden group hover:border-cyber-purple/50 transition">
+                <div class="absolute -right-4 -bottom-4 w-24 h-24 bg-cyber-purple/10 rounded-full blur-xl group-hover:bg-cyber-purple/20 transition"></div>
+                <div>
+                    <span class="text-xs font-mono uppercase text-gray-400 tracking-wider">Human Employees</span>
+                    <div class="text-3xl font-black text-white mt-1 flex items-baseline gap-2">
+                        <span>0</span>
+                        <span class="text-xs text-purple-400 font-mono font-normal">100% Automated</span>
+                    </div>
+                </div>
+                <div class="w-12 h-12 rounded-xl bg-cyber-purple/10 border border-cyber-purple/30 flex items-center justify-center text-cyber-purple text-xl">
+                    <i class="fa-solid fa-user-slash"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- ORG CHART CONNECTOR NODE: AAP (OWNER) -->
+        <div class="flex flex-col items-center justify-center mb-8 relative">
+            <div id="ownerNode" class="glass-card px-8 py-3 rounded-2xl border-2 border-cyber-purple glow-purple flex items-center gap-3 relative z-20 cursor-pointer transform hover:scale-105 transition-all">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 flex items-center justify-center text-white font-bold text-lg shadow-lg">
+                    <i class="fa-solid fa-crown"></i>
+                </div>
+                <div>
+                    <div class="text-xs font-mono text-purple-400 font-bold uppercase tracking-widest">Business Owner</div>
+                    <div class="text-lg font-extrabold text-white">YOU / AAP</div>
+                </div>
+                <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-mono bg-purple-500/20 text-purple-300 border border-purple-500/30 ml-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-purple-400 animate-ping mr-1"></span> BOSS
+                </span>
+            </div>
+
+            <!-- Vertical Connector Line -->
+            <div class="w-0.5 h-8 bg-gradient-to-b from-cyber-purple to-gray-700 my-1"></div>
+            <!-- Horizontal Connecting Line -->
+            <div class="hidden md:block w-3/4 h-0.5 bg-gray-800 relative">
+                <div class="absolute inset-0 bg-gradient-to-r from-cyber-pink via-cyber-cyan to-cyber-green opacity-40"></div>
+            </div>
+        </div>
+
+        <!-- DEPARTMENT COLUMNS CONTAINER -->
+        <div id="departmentsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
+
+            <!-- 1. SALES DEPARTMENT -->
+            <div class="dept-column space-y-4" data-dept="SALES">
+                <div class="glass-card rounded-xl p-3.5 border-t-2 border-cyber-pink flex items-center justify-between">
+                    <div class="flex items-center gap-2.5">
+                        <div class="w-3 h-3 rounded-full bg-cyber-pink animate-pulse"></div>
+                        <h2 class="font-extrabold tracking-wider text-sm text-cyber-pink uppercase">1. SALES</h2>
+                    </div>
+                    <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-cyber-pink/10 text-cyber-pink border border-cyber-pink/30">3 AGENTS</span>
+                </div>
+
+                <div class="space-y-3.5">
+                    <!-- Agent Card: Lead Finder -->
+                    <div class="agent-card glass-card rounded-xl p-4 border border-gray-800 glow-pink hover:-translate-y-1 transition duration-300 relative group" data-agent-id="lead-finder">
+                        <div class="flex items-start justify-between mb-2">
+                            <div class="flex items-center gap-3">
+                                <div class="w-9 h-9 rounded-lg bg-cyber-pink/10 border border-cyber-pink/30 flex items-center justify-center text-cyber-pink text-base">
+                                    <i class="fa-solid fa-map-location-dot"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-white text-sm group-hover:text-cyber-pink transition">LEAD FINDER</h3>
+                                    <p class="text-[11px] text-gray-400 font-mono">Google Maps &rarr; Sheet</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between pt-2 border-t border-gray-800/80 mt-3">
+                            <span class="activity-metric text-[10px] font-mono text-pink-400/90 flex items-center gap-1">
+                                <i class="fa-solid fa-bolt text-[9px]"></i> <span class="metric-val">+38 Leads today</span>
+                            </span>
+                            <button onclick="toggleAgentStatus('lead-finder')" class="status-btn px-2.5 py-1 rounded text-[10px] font-mono font-semibold transition flex items-center gap-1.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/40">
+                                <span class="status-dot w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                                <span class="status-text">RUNNING</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Agent Card: Replier -->
+                    <div class="agent-card glass-card rounded-xl p-4 border border-gray-800 glow-pink hover:-translate-y-1 transition duration-300 relative group" data-agent-id="replier">
+                        <div class="flex items-start justify-between mb-2">
+                            <div class="flex items-center gap-3">
+                                <div class="w-9 h-9 rounded-lg bg-cyber-pink/10 border border-cyber-pink/30 flex items-center justify-center text-cyber-pink text-base">
+                                    <i class="fa-brands fa-whatsapp"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-white text-sm group-hover:text-cyber-pink transition">REPLIER</h3>
+                                    <p class="text-[11px] text-gray-400 font-mono">WhatsApp pe turant</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between pt-2 border-t border-gray-800/80 mt-3">
+                            <span class="activity-metric text-[10px] font-mono text-pink-400/90 flex items-center gap-1">
+                                <i class="fa-solid fa-clock-rotate-left text-[9px]"></i> <span class="metric-val">Replied in 4s</span>
+                            </span>
+                            <button onclick="toggleAgentStatus('replier')" class="status-btn px-2.5 py-1 rounded text-[10px] font-mono font-semibold transition flex items-center gap-1.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/40">
+                                <span class="status-dot w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                                <span class="status-text">RUNNING</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Agent Card: Qualifier -->
+                    <div class="agent-card glass-card rounded-xl p-4 border border-gray-800 glow-pink hover:-translate-y-1 transition duration-300 relative group" data-agent-id="qualifier">
+                        <div class="flex items-start justify-between mb-2">
+                            <div class="flex items-center gap-3">
+                                <div class="w-9 h-9 rounded-lg bg-cyber-pink/10 border border-cyber-pink/30 flex items-center justify-center text-cyber-pink text-base">
+                                    <i class="fa-solid fa-filter-circle-dollar"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-white text-sm group-hover:text-cyber-pink transition">QUALIFIER</h3>
+                                    <p class="text-[11px] text-gray-400 font-mono">score + call book</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between pt-2 border-t border-gray-800/80 mt-3">
+                            <span class="activity-metric text-[10px] font-mono text-pink-400/90 flex items-center gap-1">
+                                <i class="fa-solid fa-phone text-[9px]"></i> <span class="metric-val">7 Calls booked</span>
+                            </span>
+                            <button onclick="toggleAgentStatus('qualifier')" class="status-btn px-2.5 py-1 rounded text-[10px] font-mono font-semibold transition flex items-center gap-1.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/40">
+                                <span class="status-dot w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                                <span class="status-text">RUNNING</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. SUPPORT DEPARTMENT -->
+            <div class="dept-column space-y-4" data-dept="SUPPORT">
+                <div class="glass-card rounded-xl p-3.5 border-t-2 border-cyber-cyan flex items-center justify-between">
+                    <div class="flex items-center gap-2.5">
+                        <div class="w-3 h-3 rounded-full bg-cyber-cyan animate-pulse"></div>
+                        <h2 class="font-extrabold tracking-wider text-sm text-cyber-cyan uppercase">2. SUPPORT</h2>
+                    </div>
+                    <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-cyber-cyan/10 text-cyber-cyan border border-cyber-cyan/30">3 AGENTS</span>
+                </div>
+
+                <div class="space-y-3.5">
+                    <!-- Agent Card: Receptionist -->
+                    <div class="agent-card glass-card rounded-xl p-4 border border-gray-800 glow-cyan hover:-translate-y-1 transition duration-300 relative group" data-agent-id="receptionist">
+                        <div class="flex items-start justify-between mb-2">
+                            <div class="flex items-center gap-3">
+                                <div class="w-9 h-9 rounded-lg bg-cyber-cyan/10 border border-cyber-cyan/30 flex items-center justify-center text-cyber-cyan text-base">
+                                    <i class="fa-solid fa-calendar-check"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-white text-sm group-hover:text-cyber-cyan transition">RECEPTIONIST</h3>
+                                    <p class="text-[11px] text-gray-400 font-mono">appointment book</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between pt-2 border-t border-gray-800/80 mt-3">
+                            <span class="activity-metric text-[10px] font-mono text-cyan-400/90 flex items-center gap-1">
+                                <i class="fa-solid fa-calendar-day text-[9px]"></i> <span class="metric-val">Tue 4 PM set</span>
+                            </span>
+                            <button onclick="toggleAgentStatus('receptionist')" class="status-btn px-2.5 py-1 rounded text-[10px] font-mono font-semibold transition flex items-center gap-1.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/40">
+                                <span class="status-dot w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                                <span class="status-text">RUNNING</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Agent Card: Call Rescuer -->
+                    <div class="agent-card glass-card rounded-xl p-4 border border-gray-800 glow-cyan hover:-translate-y-1 transition duration-300 relative group" data-agent-id="call-rescuer">
+                        <div class="flex items-start justify-between mb-2">
+                            <div class="flex items-center gap-3">
+                                <div class="w-9 h-9 rounded-lg bg-cyber-cyan/10 border border-cyber-cyan/30 flex items-center justify-center text-cyber-cyan text-base">
+                                    <i class="fa-solid fa-phone-slash"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-white text-sm group-hover:text-cyber-cyan transition">CALL RESCUER</h3>
+                                    <p class="text-[11px] text-gray-400 font-mono">missed call &rarr; WhatsApp</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between pt-2 border-t border-gray-800/80 mt-3">
+                            <span class="activity-metric text-[10px] font-mono text-cyan-400/90 flex items-center gap-1">
+                                <i class="fa-solid fa-paper-plane text-[9px]"></i> <span class="metric-val">WhatsApp sent</span>
+                            </span>
+                            <button onclick="toggleAgentStatus('call-rescuer')" class="status-btn px-2.5 py-1 rounded text-[10px] font-mono font-semibold transition flex items-center gap-1.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/40">
+                                <span class="status-dot w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                                <span class="status-text">RUNNING</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Agent Card: Inbox Sorter -->
+                    <div class="agent-card glass-card rounded-xl p-4 border border-gray-800 glow-cyan hover:-translate-y-1 transition duration-300 relative group" data-agent-id="inbox-sorter">
+                        <div class="flex items-start justify-between mb-2">
+                            <div class="flex items-center gap-3">
+                                <div class="w-9 h-9 rounded-lg bg-cyber-cyan/10 border border-cyber-cyan/30 flex items-center justify-center text-cyber-cyan text-base">
+                                    <i class="fa-solid fa-inbox"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-white text-sm group-hover:text-cyber-cyan transition">INBOX SORTER</h3>
+                                    <p class="text-[11px] text-gray-400 font-mono">inbox saaf</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between pt-2 border-t border-gray-800/80 mt-3">
+                            <span class="activity-metric text-[10px] font-mono text-cyan-400/90 flex items-center gap-1">
+                                <i class="fa-solid fa-check-double text-[9px]"></i> <span class="metric-val">12 sorted</span>
+                            </span>
+                            <button onclick="toggleAgentStatus('inbox-sorter')" class="status-btn px-2.5 py-1 rounded text-[10px] font-mono font-semibold transition flex items-center gap-1.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/40">
+                                <span class="status-dot w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                                <span class="status-text">RUNNING</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. MARKETING DEPARTMENT -->
+            <div class="dept-column space-y-4" data-dept="MARKETING">
+                <div class="glass-card rounded-xl p-3.5 border-t-2 border-cyber-green flex items-center justify-between">
+                    <div class="flex items-center gap-2.5">
+                        <div class="w-3 h-3 rounded-full bg-cyber-green animate-pulse"></div>
+                        <h2 class="font-extrabold tracking-wider text-sm text-cyber-green uppercase">3. MARKETING</h2>
+                    </div>
+                    <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-cyber-green/10 text-cyber-green border border-cyber-green/30">3 AGENTS</span>
+                </div>
+
+                <div class="space-y-3.5">
+                    <!-- Agent Card: SEO Writer -->
+                    <div class="agent-card glass-card rounded-xl p-4 border border-gray-800 glow-green hover:-translate-y-1 transition duration-300 relative group" data-agent-id="seo-writer">
+                        <div class="flex items-start justify-between mb-2">
+                            <div class="flex items-center gap-3">
+                                <div class="w-9 h-9 rounded-lg bg-cyber-green/10 border border-cyber-green/30 flex items-center justify-center text-cyber-green text-base">
+                                    <i class="fa-solid fa-pen-nib"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-white text-sm group-hover:text-cyber-green transition">SEO WRITER</h3>
+                                    <p class="text-[11px] text-gray-400 font-mono">local pages likhta</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between pt-2 border-t border-gray-800/80 mt-3">
+                            <span class="activity-metric text-[10px] font-mono text-emerald-400/90 flex items-center gap-1">
+                                <i class="fa-solid fa-globe text-[9px]"></i> <span class="metric-val">Page LIVE</span>
+                            </span>
+                            <button onclick="toggleAgentStatus('seo-writer')" class="status-btn px-2.5 py-1 rounded text-[10px] font-mono font-semibold transition flex items-center gap-1.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/40">
+                                <span class="status-dot w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                                <span class="status-text">RUNNING</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Agent Card: Repurposer -->
+                    <div class="agent-card glass-card rounded-xl p-4 border border-gray-800 glow-green hover:-translate-y-1 transition duration-300 relative group" data-agent-id="repurposer">
+                        <div class="flex items-start justify-between mb-2">
+                            <div class="flex items-center gap-3">
+                                <div class="w-9 h-9 rounded-lg bg-cyber-green/10 border border-cyber-green/30 flex items-center justify-center text-cyber-green text-base">
+                                    <i class="fa-solid fa-photo-film"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-white text-sm group-hover:text-cyber-green transition">REPURPOSER</h3>
+                                    <p class="text-[11px] text-gray-400 font-mono">1 video &rarr; 5 posts</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between pt-2 border-t border-gray-800/80 mt-3">
+                            <span class="activity-metric text-[10px] font-mono text-emerald-400/90 flex items-center gap-1">
+                                <i class="fa-solid fa-share-nodes text-[9px]"></i> <span class="metric-val">5 posts created</span>
+                            </span>
+                            <button onclick="toggleAgentStatus('repurposer')" class="status-btn px-2.5 py-1 rounded text-[10px] font-mono font-semibold transition flex items-center gap-1.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/40">
+                                <span class="status-dot w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                                <span class="status-text">RUNNING</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Agent Card: Review Bot -->
+                    <div class="agent-card glass-card rounded-xl p-4 border border-gray-800 glow-green hover:-translate-y-1 transition duration-300 relative group" data-agent-id="review-bot">
+                        <div class="flex items-start justify-between mb-2">
+                            <div class="flex items-center gap-3">
+                                <div class="w-9 h-9 rounded-lg bg-cyber-green/10 border border-cyber-green/30 flex items-center justify-center text-cyber-green text-base">
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-white text-sm group-hover:text-cyber-green transition">REVIEW BOT</h3>
+                                    <p class="text-[11px] text-gray-400 font-mono">har review ka reply</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between pt-2 border-t border-gray-800/80 mt-3">
+                            <span class="activity-metric text-[10px] font-mono text-emerald-400/90 flex items-center gap-1">
+                                <i class="fa-solid fa-reply text-[9px]"></i> <span class="metric-val">Replied to 5*</span>
+                            </span>
+                            <button onclick="toggleAgentStatus('review-bot')" class="status-btn px-2.5 py-1 rounded text-[10px] font-mono font-semibold transition flex items-center gap-1.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/40">
+                                <span class="status-dot w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                                <span class="status-text">RUNNING</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. OPS / OPERATIONS DEPARTMENT -->
+            <div class="dept-column space-y-4" data-dept="OPS">
+                <div class="glass-card rounded-xl p-3.5 border-t-2 border-cyber-orange flex items-center justify-between">
+                    <div class="flex items-center gap-2.5">
+                        <div class="w-3 h-3 rounded-full bg-cyber-orange animate-pulse"></div>
+                        <h2 class="font-extrabold tracking-wider text-sm text-cyber-orange uppercase">4. OPS</h2>
+                    </div>
+                    <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-cyber-orange/10 text-cyber-orange border border-cyber-orange/30">3 AGENTS</span>
+                </div>
+
+                <div class="space-y-3.5">
+                    <!-- Agent Card: Bill Reader -->
+                    <div class="agent-card glass-card rounded-xl p-4 border border-gray-800 glow-orange hover:-translate-y-1 transition duration-300 relative group" data-agent-id="bill-reader">
+                        <div class="flex items-start justify-between mb-2">
+                            <div class="flex items-center gap-3">
+                                <div class="w-9 h-9 rounded-lg bg-cyber-orange/10 border border-cyber-orange/30 flex items-center justify-center text-cyber-orange text-base">
+                                    <i class="fa-solid fa-file-invoice-dollar"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-white text-sm group-hover:text-cyber-orange transition">BILL READER</h3>
+                                    <p class="text-[11px] text-gray-400 font-mono">bill &rarr; spreadsheet</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between pt-2 border-t border-gray-800/80 mt-3">
+                            <span class="activity-metric text-[10px] font-mono text-orange-400/90 flex items-center gap-1">
+                                <i class="fa-solid fa-receipt text-[9px]"></i> <span class="metric-val">Bill logged</span>
+                            </span>
+                            <button onclick="toggleAgentStatus('bill-reader')" class="status-btn px-2.5 py-1 rounded text-[10px] font-mono font-semibold transition flex items-center gap-1.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/40">
+                                <span class="status-dot w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                                <span class="status-text">RUNNING</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Agent Card: HR Screener -->
+                    <div class="agent-card glass-card rounded-xl p-4 border border-gray-800 glow-orange hover:-translate-y-1 transition duration-300 relative group" data-agent-id="hr-screener">
+                        <div class="flex items-start justify-between mb-2">
+                            <div class="flex items-center gap-3">
+                                <div class="w-9 h-9 rounded-lg bg-cyber-orange/10 border border-cyber-orange/30 flex items-center justify-center text-cyber-orange text-base">
+                                    <i class="fa-solid fa-user-check"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-white text-sm group-hover:text-cyber-orange transition">HR SCREENER</h3>
+                                    <p class="text-[11px] text-gray-400 font-mono">resume check</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between pt-2 border-t border-gray-800/80 mt-3">
+                            <span class="activity-metric text-[10px] font-mono text-orange-400/90 flex items-center gap-1">
+                                <i class="fa-solid fa-user-gear text-[9px]"></i> <span class="metric-val">Top 5 picked</span>
+                            </span>
+                            <button onclick="toggleAgentStatus('hr-screener')" class="status-btn px-2.5 py-1 rounded text-[10px] font-mono font-semibold transition flex items-center gap-1.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/40">
+                                <span class="status-dot w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                                <span class="status-text">RUNNING</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Agent Card: Collector -->
+                    <div class="agent-card glass-card rounded-xl p-4 border border-gray-800 glow-orange hover:-translate-y-1 transition duration-300 relative group" data-agent-id="collector">
+                        <div class="flex items-start justify-between mb-2">
+                            <div class="flex items-center gap-3">
+                                <div class="w-9 h-9 rounded-lg bg-cyber-orange/10 border border-cyber-orange/30 flex items-center justify-center text-cyber-orange text-base">
+                                    <i class="fa-solid fa-hand-holding-dollar"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-white text-sm group-hover:text-cyber-orange transition">COLLECTOR</h3>
+                                    <p class="text-[11px] text-gray-400 font-mono">payment ka peecha</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between pt-2 border-t border-gray-800/80 mt-3">
+                            <span class="activity-metric text-[10px] font-mono text-orange-400/90 flex items-center gap-1">
+                                <i class="fa-solid fa-bell text-[9px]"></i> <span class="metric-val">Reminder sent</span>
+                            </span>
+                            <button onclick="toggleAgentStatus('collector')" class="status-btn px-2.5 py-1 rounded text-[10px] font-mono font-semibold transition flex items-center gap-1.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/40">
+                                <span class="status-dot w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                                <span class="status-text">RUNNING</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- REAL-TIME ACTIVITY FEED BAR (STICKY BOTTOM) -->
+    <footer class="fixed bottom-0 left-0 right-0 z-50 glass-nav border-t border-gray-800 px-4 py-2.5">
+        <div class="max-w-7xl mx-auto flex items-center justify-between gap-4 font-mono text-xs">
+            <div class="flex items-center gap-2 shrink-0">
+                <span class="relative flex h-2.5 w-2.5">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+                </span>
+                <span class="text-gray-300 font-bold hidden sm:inline">LIVE FEED:</span>
+            </div>
+
+            <div class="overflow-hidden whitespace-nowrap text-gray-400 text-ellipsis flex-grow">
+                <span id="liveFeedText" class="inline-block transition-all duration-500 text-cyber-cyan">
+                    [LEAD FINDER] Scraped 14 local business leads from Google Maps...
+                </span>
+            </div>
+
+            <button onclick="openLogModal()" class="shrink-0 text-gray-400 hover:text-white bg-gray-800/60 hover:bg-gray-800 px-3 py-1 rounded border border-gray-700 transition flex items-center gap-1.5">
+                <i class="fa-solid fa-list-check text-[10px]"></i> Activity Logs
+            </button>
+        </div>
+    </footer>
+
+    <!-- LOG MODAL DIALOG -->
+    <div id="logModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
+        <div class="glass-card w-full max-w-2xl rounded-2xl border border-cyber-cyan/40 p-5 space-y-4 shadow-2xl relative">
+            <div class="flex items-center justify-between border-b border-gray-800 pb-3">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-terminal text-cyber-cyan text-base"></i>
+                    <h3 class="font-bold text-white text-base">AI Agent Realtime Audit Log</h3>
+                </div>
+                <button onclick="closeLogModal()" class="text-gray-400 hover:text-white text-lg">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div id="logConsole" class="bg-black/90 rounded-xl p-4 h-64 overflow-y-auto font-mono text-xs space-y-2 border border-gray-900 text-gray-300">
+                <div><span class="text-gray-500">[09:59:01]</span> <span class="text-cyber-pink font-bold">[SYSTEM]</span> AI Autonomous Org initialization complete. 12 Agents active.</div>
+            </div>
+
+            <div class="flex items-center justify-between pt-2 border-t border-gray-800 text-xs">
+                <span class="text-gray-500 font-mono">100% Automated Execution</span>
+                <button onclick="clearLogs()" class="text-gray-400 hover:text-rose-400 transition font-mono">Clear Logs</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT CONTROLLER -->
+    <script>
+        const agentState = {
+            'lead-finder': { name: 'LEAD FINDER', dept: 'SALES', status: true, metric: '+38 Leads today' },
+            'replier': { name: 'REPLIER', dept: 'SALES', status: true, metric: 'Replied in 4s' },
+            'qualifier': { name: 'QUALIFIER', dept: 'SALES', status: true, metric: '7 Calls booked' },
+            'receptionist': { name: 'RECEPTIONIST', dept: 'SUPPORT', status: true, metric: 'Tue 4 PM set' },
+            'call-rescuer': { name: 'CALL RESCUER', dept: 'SUPPORT', status: true, metric: 'WhatsApp sent' },
+            'inbox-sorter': { name: 'INBOX SORTER', dept: 'SUPPORT', status: true, metric: '12 sorted' },
+            'seo-writer': { name: 'SEO WRITER', dept: 'MARKETING', status: true, metric: 'Page LIVE' },
+            'repurposer': { name: 'REPURPOSER', dept: 'MARKETING', status: true, metric: '5 posts created' },
+            'review-bot': { name: 'REVIEW BOT', dept: 'MARKETING', status: true, metric: 'Replied to 5*' },
+            'bill-reader': { name: 'BILL READER', dept: 'OPS', status: true, metric: 'Bill logged' },
+            'hr-screener': { name: 'HR SCREENER', dept: 'OPS', status: true, metric: 'Top 5 picked' },
+            'collector': { name: 'COLLECTOR', dept: 'OPS', status: true, metric: 'Reminder sent' }
+        };
+
+        const agentActivities = {
+            'lead-finder': ['Found 5 new plumbers in Delhi on Google Maps', 'Exported 12 validated contacts to Sheet', 'Searching new restaurant leads...'],
+            'replier': ['Sent WhatsApp reply to +91 98765*****', 'Responded to pricing inquiry in 2.1 seconds', 'Automated conversation active'],
+            'qualifier': ['Qualified Lead #402 with score 88/100', 'Booked discovery call slot for tomorrow 3 PM', 'Updated CRM lead status'],
+            'receptionist': ['Scheduled client appointment for Thursday', 'Sent calendar invite link via SMS', 'Calendar conflict resolved automatically'],
+            'call-rescuer': ['Missed call detected from +91 99112*****', 'Auto-sent rescue WhatsApp message with booking link', 'Customer clicked link'],
+            'inbox-sorter': ['Archived 8 spam emails', 'Labeled 3 high-priority client messages', 'Inbox zero status maintained'],
+            'seo-writer': ['Generated 1,200 words SEO landing page for "AC Repair Mumbai"', 'Published page draft to CMS', 'Added meta descriptions and keywords'],
+            'repurposer': ['Parsed 10-min YouTube MP4 video', 'Extracted 5 short viral clip scripts for Instagram', 'Scheduled posts across socials'],
+            'review-bot': ['Detected new 5-star Google review from Rahul', 'Generated personalized thank you reply', 'Posted review reply publicly'],
+            'bill-reader': ['Scanned vendor PDF invoice #INV-8821', 'Extracted ₹12,500 total amount to Accounting Sheet', 'Verified GST tax split'],
+            'hr-screener': ['Evaluated 20 incoming PDF resumes for Developer role', 'Filtered top 3 candidates based on skills match', 'Sent rejection emails to unqualified applicants'],
+            'collector': ['Flagged invoice overdue by 3 days', 'Sent gentle WhatsApp payment reminder to Client B', 'Payment received acknowledgment processed']
+        };
+
+        function toggleAgentStatus(id) {
+            if (!agentState[id]) return;
+            agentState[id].status = !agentState[id].status;
+            updateAgentCardUI(id);
+            updateGlobalMetrics();
+
+            const statusStr = agentState[id].status ? 'STARTED' : 'PAUSED';
+            addAuditLog(agentState[id].dept, `${agentState[id].name} agent was ${statusStr} by owner.`);
+        }
+
+        function updateAgentCardUI(id) {
+            const card = document.querySelector(`[data-agent-id="${id}"]`);
+            if (!card) return;
+
+            const btn = card.querySelector('.status-btn');
+            const dot = card.querySelector('.status-dot');
+            const text = card.querySelector('.status-text');
+            const isRunning = agentState[id].status;
+
+            if (isRunning) {
+                btn.className = 'status-btn px-2.5 py-1 rounded text-[10px] font-mono font-semibold transition flex items-center gap-1.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/40';
+                dot.className = 'status-dot w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse';
+                text.textContent = 'RUNNING';
+                card.style.opacity = '1';
+            } else {
+                btn.className = 'status-btn px-2.5 py-1 rounded text-[10px] font-mono font-semibold transition flex items-center gap-1.5 bg-rose-500/20 text-rose-400 border border-rose-500/40';
+                dot.className = 'status-dot w-1.5 h-1.5 rounded-full bg-rose-400';
+                text.textContent = 'IDLE';
+                card.style.opacity = '0.65';
+            }
+        }
+
+        function toggleAllAgents(enable) {
+            Object.keys(agentState).forEach(id => {
+                agentState[id].status = enable;
+                updateAgentCardUI(id);
+            });
+            updateGlobalMetrics();
+            addAuditLog('SYSTEM', `Owner ${enable ? 'STARTED' : 'PAUSED'} all AI Agents.`);
+        }
+
+        function updateGlobalMetrics() {
+            const activeCount = Object.values(agentState).filter(a => a.status).length;
+            document.getElementById('activeAgentCount').textContent = `${activeCount} / 12`;
+        }
+
+        document.getElementById('searchInput').addEventListener('input', applyFilters);
+        document.getElementById('deptFilter').addEventListener('change', applyFilters);
+
+        function applyFilters() {
+            const searchQuery = document.getElementById('searchInput').value.toLowerCase();
+            const selectedDept = document.getElementById('deptFilter').value;
+
+            document.querySelectorAll('.dept-column').forEach(deptCol => {
+                const deptName = deptCol.getAttribute('data-dept');
+                const matchesDept = (selectedDept === 'ALL' || selectedDept === deptName);
+
+                let hasVisibleCards = false;
+
+                deptCol.querySelectorAll('.agent-card').forEach(card => {
+                    const agentId = card.getAttribute('data-agent-id');
+                    const agent = agentState[agentId];
+                    const matchesSearch = agent.name.toLowerCase().includes(searchQuery) || 
+                                          agent.metric.toLowerCase().includes(searchQuery);
+
+                    if (matchesDept && matchesSearch) {
+                        card.style.display = 'block';
+                        hasVisibleCards = true;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                if (matchesDept && (hasVisibleCards || searchQuery === '')) {
+                    deptCol.style.display = 'block';
+                } else {
+                    deptCol.style.display = 'none';
+                }
+            });
+        }
+
+        function addAuditLog(dept, message) {
+            const consoleBox = document.getElementById('logConsole');
+            const now = new Date();
+            const timeStr = now.toTimeString().split(' ')[0];
+            
+            const logRow = document.createElement('div');
+            logRow.innerHTML = `<span class="text-gray-500">[${timeStr}]</span> <span class="text-cyber-cyan font-bold">[${dept}]</span> ${message}`;
+            consoleBox.prepend(logRow);
+        }
+
+        function runLiveFeedSimulation() {
+            setInterval(() => {
+                const activeAgentIds = Object.keys(agentState).filter(id => agentState[id].status);
+                if (activeAgentIds.length === 0) return;
+
+                const randomId = activeAgentIds[Math.floor(Math.random() * activeAgentIds.length)];
+                const agent = agentState[randomId];
+                const activities = agentActivities[randomId];
+                const randomAct = activities[Math.floor(Math.random() * activities.length)];
+
+                const feedTextEl = document.getElementById('liveFeedText');
+                feedTextEl.style.opacity = '0';
+
+                setTimeout(() => {
+                    feedTextEl.textContent = `[${agent.name}] ${randomAct}`;
+                    feedTextEl.style.opacity = '1';
+                }, 300);
+
+                if (Math.random() > 0.5) {
+                    addAuditLog(agent.dept, `${agent.name}: ${randomAct}`);
+                }
+            }, 3500);
+        }
+
+        function openLogModal() {
+            document.getElementById('logModal').classList.remove('hidden');
+            document.getElementById('logModal').classList.add('flex');
+        }
+
+        function closeLogModal() {
+            document.getElementById('logModal').classList.add('hidden');
+            document.getElementById('logModal').classList.remove('flex');
+        }
+
+        function clearLogs() {
+            document.getElementById('logConsole').innerHTML = `<div><span class="text-gray-500">[SYSTEM]</span> Logs cleared by user.</div>`;
+        }
+
+        window.onload = function() {
+            runLiveFeedSimulation();
+            updateGlobalMetrics();
+        };
+    </script>
+</body>
+</html>
+```
